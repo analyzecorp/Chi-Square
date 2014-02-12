@@ -27,7 +27,7 @@ HttpWindow::HttpWindow(QWidget *parent)
     introBody->setWordWrap(true);
     introBody->setFixedWidth(200);
     webLink = new QLabel();
-    webLink->setText("<a href=\"chi-square.org\">Chi-Square.org/datasets</a>");
+    webLink->setText("<a href=\"chi-square.org\">chi-square.org/datasets</a>");
     webLink->setFixedWidth(200);
     webLink->setFixedHeight(25);
 
@@ -222,7 +222,7 @@ void HttpWindow::determineDownload(QCheckBox *) {
         //asyncronos download. after one download completes "determine();" is called
         if (yupStat1 == false && statBox1->isChecked()) {
             yupStat1 = true; //downloaded, dont download again
-            QString downloadName("Ministerial Expenditures by Standard Object - Volume 2, Table 3");
+            QString downloadName("Ministerial Expenditures by Standard Object - Volume 2, Table 3.zip");
             if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
             if (!QFile::exists(QString(home)+"/Data/Statistical/")) { system("mkdir ~/Data/Statistical/"); }
             QString downloadLocation("/Data/Statistical/%1");
@@ -231,7 +231,7 @@ void HttpWindow::determineDownload(QCheckBox *) {
         }else{
             if (yupStat2 == false && statBox2->isChecked()) {
                 yupStat2 = true; //downloaded, dont download again
-                QString downloadName("Ten Year Comparative Financial Information - Volume 1");
+                QString downloadName("Ten Year Comparative Financial Information - Volume 1.csv");
                 if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
                 if (!QFile::exists(QString(home)+"/Data/Statistical/")) { system("mkdir ~/Data/Statistical/"); }
                 QString downloadLocation("/Data/Statistical/%1");
@@ -240,7 +240,7 @@ void HttpWindow::determineDownload(QCheckBox *) {
             }else{
                 if (yupStat3 == false && statBox3->isChecked()) {
                     yupStat3 = true; //downloaded, dont download again
-                    QString downloadName("Statistical Report on International Assistance - by Country Spending 2009-2010");
+                    QString downloadName("Statistical Report on International Assistance - by Country Spending 2009-2010.csv");
                     if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
                     if (!QFile::exists(QString(home)+"/Data/Statistical/")) { system("mkdir ~/Data/Statistical/"); }
                     QString downloadLocation("/Data/Statistical/%1");
@@ -249,7 +249,7 @@ void HttpWindow::determineDownload(QCheckBox *) {
                 }else{
                     if (yupStat4 == false && statBox4->isChecked()) {
                         yupStat4 = true; //downloaded, dont download again
-                        QString downloadName("Statistical Report on International Assistance - by Country Spending 2004-2005");
+                        QString downloadName("Statistical Report on International Assistance - by Country Spending 2004-2005.csv");
                         if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
                         if (!QFile::exists(QString(home)+"/Data/Statistical/")) { system("mkdir ~/Data/Statistical/"); }
                         QString downloadLocation("/Data/Statistical/%1");
@@ -258,7 +258,7 @@ void HttpWindow::determineDownload(QCheckBox *) {
                     }else{
                         if (yupText1 == false && textBox1->isChecked()) {
                             yupText1 = true; //downloaded, dont download again
-                            QString downloadName("Twitter Sentiment Corpus");
+                            QString downloadName("Twitter Sentiment Corpus.zip");
                             if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
                             if (!QFile::exists(QString(home)+"/Data/Text/")) { system("mkdir ~/Data/Text/"); }
                             QString downloadLocation("/Data/Text/%1");
@@ -267,7 +267,7 @@ void HttpWindow::determineDownload(QCheckBox *) {
                         }else{
                             if (yupText2 == false && textBox2->isChecked()) {
                                 yupText2 = true; //downloaded, dont download again
-                                QString downloadName("Sentiment Analysis");
+                                QString downloadName("Sentiment Analysis.zip");
                                 if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
                                 if (!QFile::exists(QString(home)+"/Data/Text/")) { system("mkdir ~/Data/Text/"); }
                                 QString downloadLocation("/Data/Text/%1");
@@ -276,7 +276,7 @@ void HttpWindow::determineDownload(QCheckBox *) {
                             }else{
                                 if (yupText3 == false && textBox3->isChecked()) {
                                     yupText3 = true; //downloaded, dont download again
-                                    QString downloadName("Slashdot Zoo signed social network of users");
+                                    QString downloadName("Slashdot Zoo signed social network of users.bz2");
                                     if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
                                     if (!QFile::exists(QString(home)+"/Data/Text/")) { system("mkdir ~/Data/Text/"); }
                                     QString downloadLocation("/Data/Text/%1");
@@ -285,7 +285,7 @@ void HttpWindow::determineDownload(QCheckBox *) {
                                 }else{
                                     if (yupText4 == false && textBox4->isChecked()) {
                                         yupText4 = true; //downloaded, dont download again
-                                        QString downloadName("Newswire FSD Corpus");
+                                        QString downloadName("Newswire FSD Corpus.tar.gz");
                                         if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
                                         if (!QFile::exists(QString(home)+"/Data/Text/")) { system("mkdir ~/Data/Text/"); }
                                         QString downloadLocation("/Data/Text/%1");
@@ -294,7 +294,7 @@ void HttpWindow::determineDownload(QCheckBox *) {
                                     }else{
                                         if (yupIMG1 == false && imageBox1->isChecked()) {
                                             yupIMG1 = true; //downloaded, dont download again
-                                            QString downloadName("Labeled Faces in the Wild Home");
+                                            QString downloadName("Labeled Faces in the Wild Home.tgz");
                                             if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
                                             if (!QFile::exists(QString(home)+"/Data/Image/")) { system("mkdir ~/Data/Image/"); }
                                             QString downloadLocation("/Data/Image/%1");
@@ -303,7 +303,7 @@ void HttpWindow::determineDownload(QCheckBox *) {
                                         }else{
                                             if (yupIMG2 == false && imageBox2->isChecked()) {
                                                 yupIMG2 = true;
-                                                QString downloadName("The Database of Faces (formerly 'The ORL Database of Faces')");
+                                                QString downloadName("The Database of Faces (formerly 'The ORL Database of Faces').zip");
                                                 if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
                                                 if (!QFile::exists(QString(home)+"/Data/Image/")) { system("mkdir ~/Data/Image/"); }
                                                 QString downloadLocation("/Data/Image/%1");
@@ -312,7 +312,7 @@ void HttpWindow::determineDownload(QCheckBox *) {
                                             }else{
                                                 if (yupIMG3 == false && imageBox3->isChecked()) {
                                                     yupIMG3 = true;
-                                                    QString downloadName("Collection of Facial Images: Grimace");
+                                                    QString downloadName("Collection of Facial Images: Grimace.zip");
                                                     if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
                                                     if (!QFile::exists(QString(home)+"/Data/Image/")) { system("mkdir ~/Data/Image/"); }
                                                     QString downloadLocation("/Data/Image/%1");
@@ -321,7 +321,7 @@ void HttpWindow::determineDownload(QCheckBox *) {
                                                 }else{
                                                     if (yupIMG4 == false && imageBox4->isChecked()) {
                                                         yupIMG4 = true;
-                                                        QString downloadName("Amsterdam Library of Object Images - Wide-baseline stereo");
+                                                        QString downloadName("Amsterdam Library of Object Images - Wide-baseline stereo.tar");
                                                         if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
                                                         if (!QFile::exists(QString(home)+"/Data/Image/")) { system("mkdir ~/Data/Image/"); }
                                                         QString downloadLocation("/Data/Image/%1");
@@ -330,7 +330,7 @@ void HttpWindow::determineDownload(QCheckBox *) {
                                                     }else{
                                                         if (yupGeo1 == false && geoBox1->isChecked()) {
                                                             yupGeo1= true;
-                                                            QString downloadName("RTI Spatial Impact Factor Data based on county-level geography inc. 1960-2000");
+                                                            QString downloadName("RTI Spatial Impact Factor Data based on county-level geography inc. 1960-2000.zip");
                                                             if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
                                                             if (!QFile::exists(QString(home)+"/Data/Geospatial/")) { system("mkdir ~/Data/Geospatial/"); }
                                                             QString downloadLocation("/Data/Geospatial/%1");
@@ -339,7 +339,7 @@ void HttpWindow::determineDownload(QCheckBox *) {
                                                         }else{
                                                             if (yupGeo2 == false && geoBox2->isChecked()) {
                                                                 yupGeo2 = true;
-                                                                QString downloadName("RTI Spatial Impact Factor Data based on tract-level geography–1990");
+                                                                QString downloadName("RTI Spatial Impact Factor Data based on tract-level geography–1990.zip");
                                                                 if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
                                                                 if (!QFile::exists(QString(home)+"/Data/Geospatial/")) { system("mkdir ~/Data/Geospatial/"); }
                                                                 QString downloadLocation("/Data/Geospatial/%1");
@@ -348,7 +348,7 @@ void HttpWindow::determineDownload(QCheckBox *) {
                                                             }else{
                                                                 if (yupGeo3 == false && geoBox3->isChecked()) {
                                                                     yupGeo3 = true;
-                                                                    QString downloadName("RTI Spatial Impact Factor Data based on PCSA-level geography; November 2011");
+                                                                    QString downloadName("RTI Spatial Impact Factor Data based on PCSA-level geography; November 2011.zip");
                                                                     if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
                                                                     if (!QFile::exists(QString(home)+"/Data/Geospatial/")) { system("mkdir ~/Data/Geospatial/"); }
                                                                     QString downloadLocation("/Data/Geospatial/%1");
@@ -357,7 +357,7 @@ void HttpWindow::determineDownload(QCheckBox *) {
                                                                 }else{
                                                                     if (yupGeo4 == false && geoBox4->isChecked()) {
                                                                         yupGeo4 = true;
-                                                                        QString downloadName("RTI Spatial Impact Factor Data based on ZCTA-level geography–1990");
+                                                                        QString downloadName("RTI Spatial Impact Factor Data based on ZCTA-level geography–1990.zip");
                                                                         if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
                                                                         if (!QFile::exists(QString(home)+"/Data/Geospatial/")) { system("mkdir ~/Data/Geospatial/"); }
                                                                         QString downloadLocation("/Data/Geospatial/%1");
@@ -366,7 +366,7 @@ void HttpWindow::determineDownload(QCheckBox *) {
                                                                     }else{
                                                                         if (yupEco1 == false && ecoBox1->isChecked()) {
                                                                             yupEco1 = true;
-                                                                            QString downloadName("Occupational Wages around the World (OWW) Database");
+                                                                            QString downloadName("Occupational Wages around the World (OWW) Database.csv");
                                                                             if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
                                                                             if (!QFile::exists(QString(home)+"/Data/Economic/")) { system("mkdir ~/Data/Economic/"); }
                                                                             QString downloadLocation("/Data/Economic/%1");
@@ -375,7 +375,7 @@ void HttpWindow::determineDownload(QCheckBox *) {
                                                                         }else{
                                                                             if (yupEco2 == false && ecoBox2->isChecked()) {
                                                                                 yupEco2 = true;
-                                                                                QString downloadName("Historical Cross-Country Technology Adoption (HCCTA) Dataset");
+                                                                                QString downloadName("Historical Cross-Country Technology Adoption (HCCTA) Dataset.csv");
                                                                                 if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
                                                                                 if (!QFile::exists(QString(home)+"/Data/Economic/")) { system("mkdir ~/Data/Economic/"); }
                                                                                 QString downloadLocation("/Data/Economic/%1");
@@ -384,7 +384,7 @@ void HttpWindow::determineDownload(QCheckBox *) {
                                                                             }else{
                                                                                 if (yupEco3 == false && ecoBox3->isChecked()) {
                                                                                     yupEco3 = true;
-                                                                                    QString downloadName("Public Use Tape on the Aging of Veterans of the Union Army");
+                                                                                    QString downloadName("Public Use Tape on the Aging of Veterans of the Union Army.zip");
                                                                                     if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
                                                                                     if (!QFile::exists(QString(home)+"/Data/Economic/")) { system("mkdir ~/Data/Economic/"); }
                                                                                     QString downloadLocation("/Data/Economic/%1");
@@ -393,7 +393,7 @@ void HttpWindow::determineDownload(QCheckBox *) {
                                                                                 }else{
                                                                                     if (yupEco4 == false && ecoBox4->isChecked()) {
                                                                                         yupEco4 = true;
-                                                                                        QString downloadName("Management practices across firms and countries");
+                                                                                        QString downloadName("Management practices across firms and countries.zip");
                                                                                         if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
                                                                                         if (!QFile::exists(QString(home)+"/Data/Economic/")) { system("mkdir ~/Data/Economic/"); }
                                                                                         QString downloadLocation("/Data/Economic/%1");
