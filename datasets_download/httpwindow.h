@@ -102,6 +102,11 @@ private:
     int yupIMG1; int yupIMG2; int yupIMG3; int yupIMG4;
     int yupGeo1; int yupGeo2; int yupGeo3; int yupGeo4;
     int yupEco1; int yupEco2; int yupEco3; int yupEco4;
+
+    int unzipStat1; int unzipText1; int unzipText2;
+    int unzipText4; int unzipImage1; int unzipImage2; int unzipImage3;
+    int unzipImage4; int unzipGeo1; int unzipGeo2; int unzipGeo3;
+    int unzipGeo4; int unzipEco3; int unzipEco4;
 };
 
 #endif

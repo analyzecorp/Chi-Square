@@ -23,7 +23,7 @@ HttpWindow::HttpWindow(QWidget *parent)
     progressBar->hide();
 
     //body of text on left
-    introBody = new QLabel(tr("Welcome to Chi-Square! The Linux distro for data scientists. Chi-Square is built off of Lubuntu, a lightweight Ubuntu Distribution.  \n\nSelect the data sets on the right you would like to download and have automaticaly set up into your programs. \n\nFor even more datasets right click and copy the link below to paste into your browser."));
+    introBody = new QLabel(tr("Welcome to Chi-Square! The Linux distro for data scientists. Chi-Square is built off of Lubuntu, a lightweight Ubuntu distribution.  \n\nSelect the data sets on the right you would like to download and have automaticaly set up into your programs. \n\nFor even more datasets right click and copy the link below to paste into your browser."));
     introBody->setWordWrap(true);
     introBody->setFixedWidth(200);
     webLink = new QLabel();
@@ -66,12 +66,12 @@ HttpWindow::HttpWindow(QWidget *parent)
     textButton = new QPushButton(tr("Text")); textButton->setFocusPolicy(Qt::NoFocus); textButton->setStyleSheet("Text-align: left; padding-left: 5px; padding-top: 3px; padding-bottom: 3px;");
     textBox1 = new QCheckBox(tr("Twitter Sentiment Corpus")); textBox1->hide(); textBox1->setFocusPolicy(Qt::NoFocus);textBox1->setToolTip("Free for non-commercial use.");
     textBox2 = new QCheckBox(tr("Sentiment Analysis")); textBox2->hide(); textBox2->setFocusPolicy(Qt::NoFocus); textBox2->setToolTip("Free for non-commercial use.");
-    textBox3 = new QCheckBox(tr("Slashdot Zoo signed social network of users")); textBox3->hide(); textBox3->setFocusPolicy(Qt::NoFocus); textBox3->setToolTip("Free for non-commercial use.");
+    textBox3 = new QCheckBox(tr("Census Income - Adult")); textBox3->hide(); textBox3->setFocusPolicy(Qt::NoFocus); textBox3->setToolTip("Free for non-commercial use.");
     textBox4 = new QCheckBox(tr("Newswire FSD Corpus")); textBox4->hide(); textBox4->setFocusPolicy(Qt::NoFocus); textBox4->setToolTip("Free for non-commercial use.");
 
     imageButton = new QPushButton(tr("Image")); imageButton->setFocusPolicy(Qt::NoFocus); imageButton->setStyleSheet("Text-align: left; padding-left: 5px; padding-top: 3px; padding-bottom: 3px;");
     imageBox1 = new QCheckBox(tr("Labeled Faces in the Wild Home")); imageBox1->hide(); imageBox1->setFocusPolicy(Qt::NoFocus); imageBox1->setToolTip("Free for non-commercial use.");
-    imageBox2 = new QCheckBox(tr("The Database of Faces (formerly 'The ORL Database of Faces')")); imageBox2->hide(); imageBox2->setFocusPolicy(Qt::NoFocus); imageBox2->setToolTip("Free for non-commercial use.");
+    imageBox2 = new QCheckBox(tr("Outdoor people tracking - football data")); imageBox2->hide(); imageBox2->setFocusPolicy(Qt::NoFocus); imageBox2->setToolTip("Free for non-commercial use.");
     imageBox3 = new QCheckBox(tr("Collection of Facial Images: Grimace")); imageBox3->hide(); imageBox3->setFocusPolicy(Qt::NoFocus); imageBox3->setToolTip("Free for non-commercial use.");
     imageBox4 = new QCheckBox(tr("Amsterdam Library of Object Images - Wide-baseline stereo")); imageBox4->hide(); imageBox4->setFocusPolicy(Qt::NoFocus); imageBox4->setToolTip("Free for non-commercial use.");
 
@@ -84,7 +84,7 @@ HttpWindow::HttpWindow(QWidget *parent)
     ecoButton = new QPushButton(tr("Economic")); ecoButton->setFocusPolicy(Qt::NoFocus); ecoButton->setStyleSheet("Text-align: left; padding-left: 5px; padding-top: 3px; padding-bottom: 3px;");
     ecoBox1 = new QCheckBox(tr("Occupational Wages around the World (OWW) Database")); ecoBox1->hide(); ecoBox1->setFocusPolicy(Qt::NoFocus); ecoBox1->setToolTip("Free for non-commercial use.");
     ecoBox2 = new QCheckBox(tr("Historical Cross-Country Technology Adoption (HCCTA) Dataset")); ecoBox2->hide(); ecoBox2->setFocusPolicy(Qt::NoFocus); ecoBox2->setToolTip("Free for non-commercial use.");
-    ecoBox3 = new QCheckBox(tr("Public Use Tape on the Aging of Veterans of the Union Army")); ecoBox3->hide(); ecoBox3->setFocusPolicy(Qt::NoFocus); ecoBox3->setToolTip("Free for non-commercial use.");
+    ecoBox3 = new QCheckBox(tr("2005 American Community Survey 1-Year PUMS Housing")); ecoBox3->hide(); ecoBox3->setFocusPolicy(Qt::NoFocus); ecoBox3->setToolTip("Free for non-commercial use.");
     ecoBox4 = new QCheckBox(tr("Management practices across firms and countries")); ecoBox4->hide(); ecoBox4->setFocusPolicy(Qt::NoFocus); ecoBox4->setToolTip("Free for non-commercial use.");
 
 
@@ -97,7 +97,6 @@ HttpWindow::HttpWindow(QWidget *parent)
     connect(&qnam, SIGNAL(sslErrors(QNetworkReply*,QList<QSslError>)),
             this, SLOT(sslErrors(QNetworkReply*,QList<QSslError>)));
 #endif
-    connect(progressBar, SIGNAL(canceled()), this, SLOT(cancelDownload()));
     connect(cancelButton, SIGNAL(clicked()), this, SLOT(cancelDownload()));
     connect(downloadButton, SIGNAL(clicked()), this, SLOT(weedOut()));
     connect(quitButton, SIGNAL(clicked()), this, SLOT(close()));
@@ -107,7 +106,6 @@ HttpWindow::HttpWindow(QWidget *parent)
     connect(geoButton, SIGNAL(clicked()), this, SLOT(geoButtonActive()));
     connect(ecoButton, SIGNAL(clicked()), this, SLOT(ecoButtonActive()));
     connect(checkBox, SIGNAL(clicked()), this, SLOT (checkBoxChanged()));
-
 
     //********************************************************************************************************************
     //  SET UP USER INTERFACE
@@ -197,12 +195,20 @@ void HttpWindow::checkBoxChanged() {
 
 //on downloadButton click
 void HttpWindow::weedOut() {
+
     //set all checkboxes as not downloaded yet
     yupStat1 = false; yupStat2 = false; yupStat3 = false; yupStat4 = false;
     yupText1 = false; yupText2 = false; yupText3 = false; yupText4 = false;
     yupIMG1 = false; yupIMG2 = false; yupIMG3 = false; yupIMG4 = false;
     yupGeo1 = false; yupGeo2 = false; yupGeo3 = false; yupGeo4 = false;
     yupEco1 = false; yupEco2 = false; yupEco3 = false; yupEco4 = false;
+
+    //set all possible compressed files as do not decompress
+    unzipStat1 = false;
+    unzipText1 = false; unzipText2 = false; unzipText4 = false;
+    unzipImage1 = false; unzipImage2 = false; unzipImage3 = false; unzipImage4 = false;
+    unzipGeo1 = false; unzipGeo2 = false; unzipGeo3 = false; unzipGeo4 = false;
+    unzipEco3 = false; unzipEco4 = false;
 
     //continue with download
     determine();
@@ -211,17 +217,99 @@ void HttpWindow::weedOut() {
 //used to loop after a download is completed without resetting checkboxes
 void HttpWindow::determine() {
 
+
+    QString home = QDir::homePath();
+
+        //decompress files
+        if (unzipStat1 == true) {
+            unzipStat1 = false;
+            if (!QFile::exists(QString(home)+"/Data/Statistical/Ministerial\ Expenditures\ by\ Standard\ Object\ -\ Volume\ 2\,\ Table\ 3/")) { system("mkdir ~/Data/Statistical/'Ministerial Expenditures by Standard Object - Volume 2, Table 3'/"); }
+            system("unzip -o ~/Data/Statistical/'Ministerial Expenditures by Standard Object - Volume 2, Table 3.zip' -d ~/Data/Statistical/'Ministerial Expenditures by Standard Object - Volume 2, Table 3'/");
+        }
+        if (unzipText1 == true) {
+            unzipText1 = false;
+            if (!QFile::exists(QString(home)+"/Data/Text/Twitter\ Sentiment\ Corpus/")) { system("mkdir ~/Data/Text/'Twitter Sentiment Corpus'/"); }
+            system("unzip -o ~/Data/Text/'Twitter Sentiment Corpus.zip' -d ~/Data/Text/'Twitter Sentiment Corpus'/");
+        }
+        if (unzipText2 == true) {
+            unzipText2 = false;
+            if (!QFile::exists(QString(home)+"/Data/Text/Sentiment\ Analysis/")) { system("mkdir ~/Data/Text/'Sentiment Analysis'/"); }
+            system("unzip -o ~/Data/Text/'Sentiment Analysis.zip' -d ~/Data/Text/'Sentiment Analysis'/");
+        }
+        if (unzipText4 == true) {
+            unzipText4 = false;
+            if (!QFile::exists(QString(home)+"/Data/Text/Newswire\ FSD\ Corpus/")) { system("mkdir ~/Data/Text/'Newswire FSD Corpus'/"); }
+            system("tar -xvzf ~/Data/Text/'Newswire FSD Corpus.tar.gz' -C ~/Data/Text/'Newswire FSD Corpus'/");
+            system("mv ~/Data/Text/'Newswire FSD Corpus'/Newswire_Events ~/Data/Text/'Newswire FSD Corpus'/Newswire_Events.csv");
+        }
+        if (unzipImage1 == true) {
+            unzipImage1 = false;
+            if (!QFile::exists(QString(home)+"/Data/Image/Labeled\ Faces\ in\ the\ Wild\ Home/")) { system("mkdir ~/Data/Image/'Labeled Faces in the Wild Home'/"); }
+            system("tar -xzf ~/Data/Image/'Labeled Faces in the Wild Home.tgz' -C ~/Data/Image/'Labeled Faces in the Wild Home'/");
+        }
+        if (unzipImage2 == true) {
+            unzipImage2 = false;
+            if (!QFile::exists(QString(home)+"/Data/Image/Outdoor\ people\ tracking\ \-\ football\ data/")) { system("mkdir ~/Data/Image/'Outdoor people tracking - football data'/"); }
+            system("unzip -o ~/Data/Image/'Outdoor people tracking - football data.zip' -d ~/Data/Image/'Outdoor people tracking - football data'/");
+        }
+        if (unzipImage3 == true) {
+            unzipImage3 = false;
+            if (!QFile::exists(QString(home)+"/Data/Image/Collection\ of\ Facial\ Images\:\ Grimace/")) { system("mkdir ~/Data/Image/'Collection of Facial Images: Grimace'/"); }
+            system("unzip -o ~/Data/Image/'Collection of Facial Images: Grimace.zip' -d ~/Data/Image/'Collection of Facial Images: Grimace'/");
+        }
+        if (unzipImage4 == true) {
+            unzipImage4 = false;
+            if (!QFile::exists(QString(home)+"/Data/Image/Amsterdam\ Library\ of\ Object\ Images\ \-\ Wide-baseline\ stereo.tar/")) { system("mkdir ~/Data/Image/'Amsterdam Library of Object Images - Wide-baseline stereo'/"); }
+            system("tar -xvf ~/Data/Image/'Amsterdam Library of Object Images - Wide-baseline stereo.tar' -C ~/Data/Image/'Amsterdam Library of Object Images - Wide-baseline stereo'/");
+        }
+        if (unzipGeo1 == true) {
+            unzipGeo1 = false;
+            if (!QFile::exists(QString(home)+"/Data/Geospatial/RTI\ Spatial\ Impact\ Factor\ Data\ based\ on\ county\-level\ geography\ inc\.\ 1960\-2000/")) { system("mkdir ~/Data/Geospatial/'RTI Spatial Impact Factor Data based on county-level geography inc. 1960-2000'/"); }
+            system("unzip -o ~/Data/Geospatial/'RTI Spatial Impact Factor Data based on county-level geography inc. 1960-2000.zip' -d ~/Data/Geospatial/'RTI Spatial Impact Factor Data based on county-level geography inc. 1960-2000'/");
+        }
+        if (unzipGeo2 == true) {
+            unzipGeo2 = false;
+            if (!QFile::exists(QString(home)+"/Data/Geospatial/RTI\ Spatial\ Impact\ Factor\ Data\ based\ on\ tract\-level\ geography\–1990/")) { system("mkdir ~/Data/Geospatial/'RTI Spatial Impact Factor Data based on tract-level geography–1990'/"); }
+            system("unzip -o ~/Data/Geospatial/'RTI Spatial Impact Factor Data based on tract-level geography–1990.zip' -d ~/Data/Geospatial/'RTI Spatial Impact Factor Data based on tract-level geography–1990'/");
+        }
+        if (unzipGeo3 == true) {
+            unzipGeo3 = false;
+            if (!QFile::exists(QString(home)+"/Data/Geospatial/RTI\ Spatial\ Impact\ Factor\ Data\ based\ on\ PCSA\-level\ geography;\ November\ 2011/")) { system("mkdir ~/Data/Geospatial/'RTI Spatial Impact Factor Data based on PCSA-level geography; November 2011'/"); }
+            system("unzip -o ~/Data/Geospatial/'RTI Spatial Impact Factor Data based on PCSA-level geography; November 2011.zip' -d ~/Data/Geospatial/'RTI Spatial Impact Factor Data based on PCSA-level geography; November 2011'/");
+        }
+        if (unzipGeo4 == true) {
+            unzipGeo4 = false;
+            if (!QFile::exists(QString(home)+"/Data/Geospatial/RTI\ Spatial\ Impact\ Factor\ Data\ based\ on\ ZCTA\-level\ geography\–1990/")) { system("mkdir ~/Data/Geospatial/'RTI Spatial Impact Factor Data based on ZCTA-level geography–1990'/"); }
+            system("unzip -o ~/Data/Geospatial/'RTI Spatial Impact Factor Data based on ZCTA-level geography–1990.zip' -d ~/Data/Geospatial/'RTI Spatial Impact Factor Data based on ZCTA-level geography–1990'/");
+        }
+        if (unzipEco3 == true) {
+            unzipEco3 = false;
+            if (!QFile::exists(QString(home)+"/Data/Economic/2005\ American\ Community\ Survey\ 1\-Year\ PUMS\ Housing/")) { system("mkdir ~/Data/Economic/'2005 American Community Survey 1-Year PUMS Housing'/"); }
+            system("unzip -o ~/Data/Economic/'2005 American Community Survey 1-Year PUMS Housing.zip' -d ~/Data/Economic/'2005 American Community Survey 1-Year PUMS Housing'/");
+        }
+        if (unzipEco4 == true) {
+            unzipEco4 = false;
+            if (!QFile::exists(QString(home)+"/Data/Economic/Management\ practices\ across\ firms\ and\ countries/")) { system("mkdir ~/Data/Economic/'Management practices across firms and countries'/"); }
+            system("unzip -o ~/Data/Economic/'Management practices across firms and countries.zip' -d ~/Data/Economic/'Management practices across firms and countries'/");
+        }
+
+        //statusLabel->setText(tr("Downloaded data set(s) to ~/Data/."));
+
+
+
     determineDownload(statBox1);
 }
 
 //determine which checkboxes to download
 void HttpWindow::determineDownload(QCheckBox *) {
 
+
     QString home = QDir::homePath();
 
         //asyncronos download. after one download completes "determine();" is called
         if (yupStat1 == false && statBox1->isChecked()) {
             yupStat1 = true; //downloaded, dont download again
+            unzipStat1 = true; //file needs to be decompressed
             QString downloadName("Ministerial Expenditures by Standard Object - Volume 2, Table 3.zip");
             if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
             if (!QFile::exists(QString(home)+"/Data/Statistical/")) { system("mkdir ~/Data/Statistical/"); }
@@ -258,6 +346,7 @@ void HttpWindow::determineDownload(QCheckBox *) {
                     }else{
                         if (yupText1 == false && textBox1->isChecked()) {
                             yupText1 = true; //downloaded, dont download again
+                            unzipText1 = true; //file needs to be decompressed
                             QString downloadName("Twitter Sentiment Corpus.zip");
                             if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
                             if (!QFile::exists(QString(home)+"/Data/Text/")) { system("mkdir ~/Data/Text/"); }
@@ -267,6 +356,7 @@ void HttpWindow::determineDownload(QCheckBox *) {
                         }else{
                             if (yupText2 == false && textBox2->isChecked()) {
                                 yupText2 = true; //downloaded, dont download again
+                                unzipText2 = true; //file needs to be decompressed
                                 QString downloadName("Sentiment Analysis.zip");
                                 if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
                                 if (!QFile::exists(QString(home)+"/Data/Text/")) { system("mkdir ~/Data/Text/"); }
@@ -276,15 +366,16 @@ void HttpWindow::determineDownload(QCheckBox *) {
                             }else{
                                 if (yupText3 == false && textBox3->isChecked()) {
                                     yupText3 = true; //downloaded, dont download again
-                                    QString downloadName("Slashdot Zoo signed social network of users.bz2");
+                                    QString downloadName("Census Income - Adult.csv");
                                     if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
                                     if (!QFile::exists(QString(home)+"/Data/Text/")) { system("mkdir ~/Data/Text/"); }
                                     QString downloadLocation("/Data/Text/%1");
-                                    url = "http://konect.uni-koblenz.de/downloads/own/slashdot-zoo.tar.bz2";
+                                    url = "http://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.data";
                                     downloadFile(url, downloadName, downloadLocation);
                                 }else{
                                     if (yupText4 == false && textBox4->isChecked()) {
                                         yupText4 = true; //downloaded, dont download again
+                                        unzipText4 = true; //file needs to be decompressed
                                         QString downloadName("Newswire FSD Corpus.tar.gz");
                                         if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
                                         if (!QFile::exists(QString(home)+"/Data/Text/")) { system("mkdir ~/Data/Text/"); }
@@ -294,6 +385,7 @@ void HttpWindow::determineDownload(QCheckBox *) {
                                     }else{
                                         if (yupIMG1 == false && imageBox1->isChecked()) {
                                             yupIMG1 = true; //downloaded, dont download again
+                                            unzipImage1 = true; //file needs to be decompressed
                                             QString downloadName("Labeled Faces in the Wild Home.tgz");
                                             if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
                                             if (!QFile::exists(QString(home)+"/Data/Image/")) { system("mkdir ~/Data/Image/"); }
@@ -303,15 +395,17 @@ void HttpWindow::determineDownload(QCheckBox *) {
                                         }else{
                                             if (yupIMG2 == false && imageBox2->isChecked()) {
                                                 yupIMG2 = true;
-                                                QString downloadName("The Database of Faces (formerly 'The ORL Database of Faces').zip");
+                                                unzipImage2 = true;
+                                                QString downloadName("Outdoor people tracking - football data.zip");
                                                 if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
                                                 if (!QFile::exists(QString(home)+"/Data/Image/")) { system("mkdir ~/Data/Image/"); }
                                                 QString downloadLocation("/Data/Image/%1");
-                                                url = "http://www.cl.cam.ac.uk/Research/DTG/attarchive/pub/data/att_faces.zip";
+                                                url = "http://ftp.pets.rdg.ac.uk/VS-PETS/Training-Camera4.zip";
                                                 downloadFile(url, downloadName, downloadLocation);
                                             }else{
                                                 if (yupIMG3 == false && imageBox3->isChecked()) {
                                                     yupIMG3 = true;
+                                                    unzipImage3 = true;
                                                     QString downloadName("Collection of Facial Images: Grimace.zip");
                                                     if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
                                                     if (!QFile::exists(QString(home)+"/Data/Image/")) { system("mkdir ~/Data/Image/"); }
@@ -321,6 +415,7 @@ void HttpWindow::determineDownload(QCheckBox *) {
                                                 }else{
                                                     if (yupIMG4 == false && imageBox4->isChecked()) {
                                                         yupIMG4 = true;
+                                                        unzipImage4 = true;
                                                         QString downloadName("Amsterdam Library of Object Images - Wide-baseline stereo.tar");
                                                         if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
                                                         if (!QFile::exists(QString(home)+"/Data/Image/")) { system("mkdir ~/Data/Image/"); }
@@ -330,6 +425,7 @@ void HttpWindow::determineDownload(QCheckBox *) {
                                                     }else{
                                                         if (yupGeo1 == false && geoBox1->isChecked()) {
                                                             yupGeo1= true;
+                                                            unzipGeo1 = true;
                                                             QString downloadName("RTI Spatial Impact Factor Data based on county-level geography inc. 1960-2000.zip");
                                                             if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
                                                             if (!QFile::exists(QString(home)+"/Data/Geospatial/")) { system("mkdir ~/Data/Geospatial/"); }
@@ -339,6 +435,7 @@ void HttpWindow::determineDownload(QCheckBox *) {
                                                         }else{
                                                             if (yupGeo2 == false && geoBox2->isChecked()) {
                                                                 yupGeo2 = true;
+                                                                unzipGeo2 = true;
                                                                 QString downloadName("RTI Spatial Impact Factor Data based on tract-level geography–1990.zip");
                                                                 if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
                                                                 if (!QFile::exists(QString(home)+"/Data/Geospatial/")) { system("mkdir ~/Data/Geospatial/"); }
@@ -348,6 +445,7 @@ void HttpWindow::determineDownload(QCheckBox *) {
                                                             }else{
                                                                 if (yupGeo3 == false && geoBox3->isChecked()) {
                                                                     yupGeo3 = true;
+                                                                    unzipGeo3 = true;
                                                                     QString downloadName("RTI Spatial Impact Factor Data based on PCSA-level geography; November 2011.zip");
                                                                     if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
                                                                     if (!QFile::exists(QString(home)+"/Data/Geospatial/")) { system("mkdir ~/Data/Geospatial/"); }
@@ -357,6 +455,7 @@ void HttpWindow::determineDownload(QCheckBox *) {
                                                                 }else{
                                                                     if (yupGeo4 == false && geoBox4->isChecked()) {
                                                                         yupGeo4 = true;
+                                                                        unzipGeo4 = true;
                                                                         QString downloadName("RTI Spatial Impact Factor Data based on ZCTA-level geography–1990.zip");
                                                                         if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
                                                                         if (!QFile::exists(QString(home)+"/Data/Geospatial/")) { system("mkdir ~/Data/Geospatial/"); }
@@ -384,15 +483,17 @@ void HttpWindow::determineDownload(QCheckBox *) {
                                                                             }else{
                                                                                 if (yupEco3 == false && ecoBox3->isChecked()) {
                                                                                     yupEco3 = true;
-                                                                                    QString downloadName("Public Use Tape on the Aging of Veterans of the Union Army.zip");
+                                                                                    unzipEco3 = true;
+                                                                                    QString downloadName("2005 American Community Survey 1-Year PUMS Housing.zip");
                                                                                     if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
                                                                                     if (!QFile::exists(QString(home)+"/Data/Economic/")) { system("mkdir ~/Data/Economic/"); }
                                                                                     QString downloadLocation("/Data/Economic/%1");
-                                                                                    url = "http://www.nber.org/milpen/EntireDataset/milaxt.zip";
+                                                                                    url = "http://www2.census.gov/acs/downloads/pums/2005/csv_hus.zip";
                                                                                     downloadFile(url, downloadName, downloadLocation);
                                                                                 }else{
                                                                                     if (yupEco4 == false && ecoBox4->isChecked()) {
                                                                                         yupEco4 = true;
+                                                                                        unzipEco4 = true;
                                                                                         QString downloadName("Management practices across firms and countries.zip");
                                                                                         if (!QFile::exists(QString(home)+"/Data/")) { system("mkdir ~/Data/"); }
                                                                                         if (!QFile::exists(QString(home)+"/Data/Economic/")) { system("mkdir ~/Data/Economic/"); }
@@ -400,6 +501,7 @@ void HttpWindow::determineDownload(QCheckBox *) {
                                                                                         url = "http://worldmanagementsurvey.org/wp-content/images/2012/07/AMP.zip";
                                                                                         downloadFile(url, downloadName, downloadLocation);
                                                                                     }else{
+                                                                                        //reset checkboxes
                                                                                         statBox1->setChecked(false); statBox2->setChecked(false); statBox3->setChecked(false); statBox4->setChecked(false);
                                                                                         textBox1->setChecked(false); textBox2->setChecked(false); textBox3->setChecked(false); textBox4->setChecked(false);
                                                                                         imageBox1->setChecked(false); imageBox2->setChecked(false); imageBox3->setChecked(false); imageBox4->setChecked(false);
